@@ -54,17 +54,107 @@
    // for(var i=0; i<li.length;i++){
     
    // li[i].style.backgroundColor='magenta'; }
-   var secondItem = document.querySelector('.list-group-item:nth-child(2)');
-   secondItem.style.color="green";
+   //var secondItem = document.querySelector('.list-group-item:nth-child(2)');
+   //secondItem.style.color="green";
 
-   var odd = document.querySelectorAll('li:nth-child(odd)');
-   for(var i=0;i<odd.length;i++){
-    odd[i].style.backgroundColor = "green";
-   }
+   //var odd = document.querySelectorAll('li:nth-child(odd)');
+   //for(var i=0;i<odd.length;i++){
+   // odd[i].style.backgroundColor = "green";
+   // }
+
+  //TRAVARSING OF DOM
+
+  //Parent Node
+  var itemlist = document.querySelector('#items');
+  console.log(itemlist.parentNode);
+  itemlist.parentNode.style.backgroundColor = "grey";  
+  console.log(itemlist.parentNode.parentNode);
+  
+
+  //Parent Element
+
+  console.log(itemlist.parentElement);
+  itemlist.parentElement.style.backgroundColor = "grey";  
+  console.log(itemlist.parentElement.parentElement);
+
+  //Child Nodes
+  console.log(itemlist.childNodes);
+  console.log(itemlist.children);
+  console.log(itemlist.children[1]);
+  itemlist.children[1].style.backgroundColor = "blue";
 
   
-    
-</script>
 
+  //FirstChild
+  console.log(itemlist.firstChild);
+  //firstElementChild)
+  console.log(itemlist.firstElementChild);
+  //itemlist.firstElementChild.textContent = 'HEllo';
+
+  //lastChild
+  console.log(itemlist.lastChild);
+  //lastElementChild
+  console.log(itemlist.lastElementChild);
+  //itemlist.lastElementChild.textContent = 'HEllo';
+
+
+  //nextSibling
+  console.log(itemlist.nextSibling);
+   //nextElementSibling
+   console.log(itemlist.nextElementSibling);
+
+    //previousSibling
+  console.log(itemlist.previousSibling);
+   //previousElementSibling
+   console.log(itemlist.previousElementSibling);
+
+   //Create a div
+   var newDiv = document.createElement('div');
+
+   //Add class
+   newDiv.className="hello";
+
+   //add id
+   newDiv.id = "hello1" ;
+
+   //add attribute
+
+   newDiv.setAttribute("title",'Hello Div');
+
+   //Create text Node
+
+   var newdivtext = document.createTextNode("Hello");
+
+   //Add text to div
+
+   newDiv.appendChild(newdivtext);
+
+   var container = document.querySelector('header .container');
+   var h1=document.querySelector('header h1');
+   container.insertBefore(newDiv,h1);
+
+   var itemlist = document.querySelector('#items');
+  console.log(itemlist.parentNode);
+  itemlist.parentNode.style.backgroundColor = "grey";  
+  console.log(itemlist.parentNode.parentNode);
+  console.log(itemlist.innerHTML);
+  itemlist.innerHTML = '<li>"Hello world" </li>' + itemlist.innerHTML ;
+  console.log(itemlist.innerHTML);
+
+
+
+
+  
+
+  
+
+
+
+
+
+
+  
+
+</script>
 </body>
 </html>
