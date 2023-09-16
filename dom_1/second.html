@@ -26,27 +26,38 @@
       <li class="list-group-item">Item 2</li>
       <li class="list-group-item">Item 3</li>
       <li class="list-group-item">Item 4</li>
+      <li>Item 5</li>
     </ul>
    </div>
   </div>
   <script> 
   var headertitle= document.getElementById('header-title');
   headertitle.style.borderBottom='solid 3px #000';
+
+
   
 
   //var classtitle= document.getElementById('itemHeading');
   //classtitle.style.fontWeight='bold';
-  //classtitle.style.color='green';*/
+  //classtitle.style.color='green';
 
-  var items=document.getElementsByClassName('list-group-item');
-  items[1].style.backgroundColor='yellow';
+ // var items=document.getElementsByClassName('list-group-item');
+  //items[1].style.backgroundColor='yellow';
 
-  for(var i=0; i<items.length;i++){
-  items[i].style.fontWeight = 'bold';
-  items[i].style.color='magenta';
-  }
+  //for(var i=0; i<items.length;i++){
+ // items[i].style.fontWeight = 'bold';
+ // items[i].style.color='magenta'; } 
 
 
+ var li=document.getElementsByTagName('li');
+    
+    for(var i=0; i<li.length;i++){
+    
+    li[i].style.backgroundColor='magenta'; 
+}
+
+  
+    
 </script>
 
 </body>
