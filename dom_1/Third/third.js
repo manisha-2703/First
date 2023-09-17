@@ -9,19 +9,51 @@ itemList.addEventListener('click', removeItem);
 // Filter event
 filter.addEventListener('keyup', filterItems);
 
+
+// Select the parent element where you want to add the input field
+var mainContainer = document.getElementById('main');
+
+// Create a new input element
+var inputElement = document.createElement('input');
+
+// Set the attributes for the input element (class and ID)
+inputElement.setAttribute('type', 'text');
+inputElement.setAttribute('class', 'form-control mr-2');
+inputElement.setAttribute('id', 'description');
+
+// Append the input element to the form (or any desired parent element)
+var addForm = mainContainer.querySelector('#addForm');
+addForm.appendChild(inputElement);
+
+// Append the input element after the existing item input
+addForm.insertBefore(inputElement, addForm.childNodes[0]);
+
+// Adjust the order of the existing elements
+addForm.insertBefore(addForm.childNodes[2], inputElement.nextSibling);
+
 // Add item
 function addItem(e){
   e.preventDefault();
 
   // Get input value
-  var newItem = document.getElementById('item').value;
+  var newItemName = document.getElementById('item').value;
+  var newItemDescription = document.getElementById('description').value;
 
   // Create new li element
   var li = document.createElement('li');
   // Add class
   li.className = 'list-group-item';
-  // Add text node with input value
-  li.appendChild(document.createTextNode(newItem));
+  
+  // Create and append item name
+  var itemNameNode = document.createElement('div');
+  itemNameNode.appendChild(document.createTextNode(newItemName));
+  li.appendChild(itemNameNode);
+
+  // Create and append item description
+  var descriptionNode = document.createElement('div');
+  descriptionNode.appendChild(document.createTextNode(newItemDescription));
+  li.appendChild(descriptionNode);
+
 
   // Create del button element
   var deleteBtn = document.createElement('button');
@@ -53,6 +85,10 @@ function addItem(e){
   // Append li to list
   itemList.appendChild(li);
 
+ // Clear input fields after adding item
+ document.getElementById('item').value = '';
+ document.getElementById('description').value = '';
+
 
 
 
@@ -77,3 +113,20 @@ function removeItem(e){
   }
 }
 
+// Filter Items
+function filterItems(e){
+  // convert text to lowercase
+  var text = e.target.value.toLowerCase();
+  // Get lis
+  var items = itemList.getElementsByTagName('li');
+  // Convert to an array
+  Array.from(items).forEach(function(item){
+    var itemName = item.childNodes[0].textContent.toLowerCase();
+    var itemDescription = item.childNodes[1].textContent.toLowerCase();
+    if(itemName.includes(text) || itemDescription.includes(text)){
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
